@@ -1,12 +1,25 @@
 from flask import Blueprint, request
-from pydantic import PositiveInt
 
 products = Blueprint('products', __name__, url_prefix='/products')
 
 
-@products.route('/get_product', methods=['GET'])
+@products.route('/get_product_review', methods=['GET'])
 async def get_product():
-    return 'Get product'
+    """
+    Parameters
+    ----------
+    product_id: int
+    limit: int
+    offset: int
+
+    Returns
+    -------
+    json
+        a json with static keys "asin: product.asin", "title: product.title"
+        and different "review_title: review.title", "review: review.text"
+        depending on limit & offset
+    """
+    return 'Get product review'
 
 
 @products.route('/set_review', methods=['PUT'])

@@ -7,6 +7,10 @@ name = "pypi"
 flask = {extras = ["async"], version = "*"}
 pydantic = "*"
 flask-caching = "*"
+sqlalchemy = {extras = ["asyncio"], version = "*"}
+asyncpg = "*"
+psycopg2-binary = "*"
+openpyxl = "*"
 
 [dev-packages]
 
