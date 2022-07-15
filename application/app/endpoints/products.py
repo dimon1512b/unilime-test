@@ -28,7 +28,6 @@ async def get_product_review() -> json:
         depending on limit & offset
     """
     req = get_request(request)
-    print(f'{req = }')
     try:
         if GetProductReviewReq(**req):
             return json.dumps(await product_reviews(req))
