@@ -5,7 +5,7 @@ from app.main import app
 
 def main() -> None:
     try:
-        app.run()
+        app.run(host='0.0.0.0')
     except KeyboardInterrupt:
         print("Received exit, exiting")
     except Exception as e:

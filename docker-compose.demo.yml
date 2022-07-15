@@ -5,18 +5,16 @@ services:
   db:
     image: postgres:14.1-alpine
     restart: always
-#    command: --default-authentication-plugin=mysql_native_password
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DATABASE=${DB_NAME}
-      - POSTGRES_ROOT_PASSWORD=${DB_PASSWORD}
-#    cap_add:
-#      - SYS_NICE  # CAP_SYS_NICE
-#    volumes:
-#      - db-data:/var/lib/mysql:rw
-#    ports:
-#      - '5432:5432'
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - target: 5432
+        published: 15432
+        protocol: tcp
     networks:
       - db
   
@@ -25,7 +23,7 @@ services:
     restart: always
     ports:
       - target: 8080
-        published: 8180
+        published: 8181
         protocol: tcp
     depends_on:
       - db
@@ -33,35 +31,27 @@ services:
       - db
 
   unilime-test:
-    build:
-      context: .
-      target: unilime-test
-      args:
-        BUILD_TYPE: dev
+    build: .
     restart: always
     environment:
       DATABASE_SERVER: db
       DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}=postgres
+      DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      DB_URL: postgresql+asyncpg://${DB_USER}:${DB_PASSWORD}@127.0.0.1:5432/${DB_NAME}
+      DB_URL: postgresql+asyncpg://${DB_USER}:${DB_PASSWORD}@${DB_SERVER_PROD}/${DB_NAME}
+      DB_URL_SYNC: postgresql://${DB_USER}:${DB_PASSWORD}@${DB_SERVER_PROD}/${DB_NAME}
       DB_DEBUG: ${DB_DEBUG}
-#    volumes:
-#      - ./docker/ssl:/etc/ssl:ro
     networks:
       - db
     ports:
-#      - target: 80
-#        published: 8084
-#        protocol: tcp
       - target: 5000
-        published: 5000
+        published: 5001
         protocol: tcp
     depends_on:
       - db
 
-volumes:
-  db-data: {}
-
 networks:
+  db: {}
+
+volumes:
   db:
