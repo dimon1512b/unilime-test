@@ -6,7 +6,6 @@ Test task for Python Developer position
 ## Dependencies
 - .env file with variables in root directory
 - installed docker and docker-compose
-- installed pipenv
 
 ## Sequencing
 ```bash
