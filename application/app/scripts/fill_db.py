@@ -40,7 +40,7 @@ def read_products():
             if col[i].column_letter == "A":
                 obj_to_append["title"] = col[i].value
             elif col[i].column_letter == "B":
-                obj_to_append["asin"] = col[i].value
+                obj_to_append["asin"] = col[i].value  # noqa
         products_list.append(obj_to_append)
     print(f'we out read_products\t{len(products_list) = }')
     return products_list
@@ -48,7 +48,7 @@ def read_products():
 
 def read_reviews(products):
     print('we in read_reviews')
-    products_asins = [product["asin"] for product in products]
+    products_asins = [product["asin"] for product in products]  # noqa
     reviews_list = []
     for i in range(1, sheet_reviews.max_row):
         obj_to_append = {}
@@ -57,7 +57,7 @@ def read_reviews(products):
                 if col[i].value not in products_asins:
                     obj_to_append = {}
                     break
-                obj_to_append["product_asin"] = col[i].value
+                obj_to_append["product_asin"] = col[i].value  # noqa
             elif col[i].column_letter == "B":
                 obj_to_append["title"] = col[i].value
             elif col[i].column_letter == "C":
