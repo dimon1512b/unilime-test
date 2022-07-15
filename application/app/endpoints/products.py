@@ -2,13 +2,16 @@ import json
 
 from flask import Blueprint, request
 
+from app.cache import cache
 from app.schemas.products import GetProductReviewReq, SetReview
 from app.utils import get_request, product_reviews, set_new_review
+
 
 products = Blueprint('products', __name__, url_prefix='/products')
 
 
 @products.route('/get_product_review', methods=['POST', 'GET'])
+@cache.cached(timeout=10)
 async def get_product_review() -> json:
     """
     Parameters

@@ -1,3 +1,4 @@
+from flask_caching import Cache
 from pydantic import BaseSettings
 
 

@@ -1,4 +1,6 @@
 from flask import Flask
+
+from .cache import cache
 from .endpoints.products import products
 
 config = {
@@ -10,3 +12,5 @@ config = {
 app = Flask(__name__)
 app.config.from_mapping(config)
 app.register_blueprint(products)
+
+cache.init_app(app)

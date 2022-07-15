@@ -1,3 +1,5 @@
+import asyncio
+
 from sqlalchemy import select
 
 from app.db.models import Product, Review

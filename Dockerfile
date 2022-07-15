@@ -20,6 +20,6 @@ RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
 FROM base as unilime-test
 COPY --from=python-deps /.venv /.venv
 ENV PATH="/.venv/bin:$PATH"
-ENV PYTHONPATH=/application
+ENV PYTHONPATH=./application
 COPY ./application /application
 CMD [ "python", "./application/server.py" ]
