@@ -11,7 +11,7 @@ products = Blueprint('products', __name__, url_prefix='/products')
 
 
 @products.route('/get_product_review', methods=['POST', 'GET'])
-@cache.cached(timeout=10)
+@cache.cached(timeout=10, query_string=True)
 async def get_product_review() -> json:
     """
     Parameters
@@ -32,14 +32,14 @@ async def get_product_review() -> json:
         if GetProductReviewReq(**req):
             return json.dumps(await product_reviews(req))
     except Exception as e:
-        return json.dumps({
+        return {
             "status": "failure",
             "reason": str(e),
-        })
+        }
 
 
 @products.route('/set_review', methods=['POST', 'PUT'])
-async def set_review() -> str:
+async def set_review() -> json:
     """
         Parameters
         ----------
@@ -58,8 +58,8 @@ async def set_review() -> str:
             await set_new_review(req)
             return json.dumps({"status": "success"})
     except Exception as e:
-        return json.dumps({
+        return {
             "status": "failure",
             "reason": str(e),
-        })
+        }
     return json.dumps(req)

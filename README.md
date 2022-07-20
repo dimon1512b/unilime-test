@@ -5,6 +5,15 @@ Test task for Python Developer position
 
 ## Dependencies
 - .env file with variables in root directory
+  - PYTHONPATH=./application
+  - DB_NAME=db_name
+  - DB_USER=db_user
+  - DB_PASSWORD=db_password
+  - DB_SERVER_PROD=db_service:port
+  - DB_SERVER=host:port
+  - DB_URL=postgresql+asyncpg://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/${DB_NAME}
+  - DB_URL_SYNC=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/${DB_NAME}
+  - DB_DEBUG=bool
 - installed docker and docker-compose
 
 ## Sequencing by docker
