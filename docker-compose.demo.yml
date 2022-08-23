@@ -36,10 +36,12 @@ services:
     environment:
       DATABASE_SERVER: db
       DB_NAME: ${DB_NAME}
+      DB_NAME_TEST: ${DB_NAME_TEST}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_URL: postgresql+asyncpg://${DB_USER}:${DB_PASSWORD}@${DB_SERVER_PROD}/${DB_NAME}
       DB_URL_SYNC: postgresql://${DB_USER}:${DB_PASSWORD}@${DB_SERVER_PROD}/${DB_NAME}
+      DB_URL_TEST: postgresql://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/${DB_NAME_TEST}
       DB_DEBUG: ${DB_DEBUG}
     networks:
       - db

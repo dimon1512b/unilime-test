@@ -26,8 +26,8 @@ Test task for Python Developer position
 4. docker-compose --file docker-compose.demo.yml up
 5. docker-compose --file docker-compose.demo.yml exec unilime-test python application/app/scripts/create_db_tables.py
 6. docker-compose --file docker-compose.demo.yml exec unilime-test python application/app/scripts/fill_db.py
-7. go by bowser or curl to 'http://localhost:5001/products/get_product_review?product_id=1&limit=2&offset=2'
-8. curl -X POST 'http://localhost:5001/products/set_review' -H 'Content-Type: application/json' -d '{"product_id":1, "title": "test_title", "review": "Test Review"}
+7. go by browser or curl to 'http://localhost:5001/products/get_product_review?product_id=1&limit=2&offset=2'
+8. curl -X POST 'http://localhost:5001/products/set_review' -H 'Content-Type: application/json' -d '{"product_id":1, "title": "test_title", "review": "Test Review"}'
 9. do step 7 and compare results
 ```
 
@@ -53,7 +53,7 @@ Test task for Python Developer position
 6. python application/app/scripts/fill_db.py  # filling tables
 7. python application/server.py
 8. go by bowser or curl to 'http://localhost:5000/products/get_product_review?product_id=1&limit=2&offset=2'
-9.curl -X POST 'http://localhost:5000/products/set_review' -H 'Content-Type: application/json' -d '{"product_id":1, "title": "test_title", "review": "Test Review"}
+9.curl -X POST 'http://localhost:5000/products/set_review' -H 'Content-Type: application/json' -d '{"product_id":1, "title": "test_title", "review": "Test Review"}'
 10. do step 8 and compare results
 ```
 
