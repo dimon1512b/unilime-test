@@ -1,6 +1,7 @@
 import asyncio
 
 from sqlalchemy import select
+from sqlalchemy_utils import database_exists, create_database
 
 from app.db.models import Product, Review
 from app.db.session import session_local
@@ -57,3 +58,9 @@ async def set_new_review(data: dict) -> None:
         session.add(new_review)
         await session.commit()
         print(f'{new_review.__dict__ = }')
+
+
+def create_db_if_not_exist(engine):
+    if not database_exists(engine.url):
+        create_database(engine.url)
+    print("TEST DB WAS CREATED")

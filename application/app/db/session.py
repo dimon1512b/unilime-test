@@ -12,6 +12,7 @@ engine = create_async_engine(
     pool_recycle=settings.DB_POOL_RECYCLE,
 )
 
+
 session_local = sessionmaker(
     engine,
     expire_on_commit=False,

@@ -1,5 +1,20 @@
+import pytest
 from starlette import status
 
 
-async def test_get_product_review(client):
+@pytest.mark.parametrize(
+    "product_id, limit, offset, is_error_expected",
+    [
+        (),
+        (),
+        (),
+    ]
+)
+async def test_get_product_review(
+    client,
+    product_id,
+    limit,
+    offset,
+    is_error_expected,
+):
     pass

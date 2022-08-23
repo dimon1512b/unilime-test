@@ -8,6 +8,7 @@ flask = {extras = ["async"], version = "*"}
 pydantic = "*"
 flask-caching = "*"
 sqlalchemy = {extras = ["asyncio"], version = "*"}
+sqlalchemy-utils = "*"
 asyncpg = "*"
 psycopg2-binary = "*"
 openpyxl = "*"
