@@ -15,6 +15,7 @@ Test task for Python Developer position
   - DB_URL=postgresql+asyncpg://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/${DB_NAME}
   - DB_URL_SYNC=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/${DB_NAME}
   - DB_URL_TEST=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/${DB_NAME_TEST}
+  - DB_URL_TEST_A=postgresql+asyncpg://${DB_USER}:${DB_PASSWORD}@${DB_SERVER}/${DB_NAME_TEST}
   - DB_DEBUG=bool
 - installed docker and docker-compose
 
